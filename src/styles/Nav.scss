@@ -1,0 +1,30 @@
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; 
+    align-items: flex-end;
+    width: 100%;
+    margin: auto;
+    background-color: #c7a22d;
+    padding: 20px 100px;
+    &__logo {
+        width: 15%;
+        margin-right: 30px;
+    }
+    &__links {
+        width: 85%;
+        display: flex;
+        justify-content: space-evenly;
+        list-style-type: none;
+        font: Verdana, Georgia, sans-serif;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    &__link {
+        color: #000!important;
+        text-decoration: none!important;
+        &:hover {
+            color: red!important;
+        }
+    }
+}

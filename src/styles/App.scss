@@ -1,0 +1,15 @@
+$primarycolor: #C7A22D;
+$secondarycolor: red;
+
+.container {
+    width: 100%;
+    margin: auto;
+}
+
+.btnClassic {
+    background-color: $primarycolor!important;
+    border: 1px solid #000!important;
+    &:hover {
+        color: #000!important;
+    }
+}

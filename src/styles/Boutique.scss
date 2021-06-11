@@ -1,0 +1,21 @@
+.products {
+    margin: 30px auto;
+    &__title {
+        font-style: 2.5em;
+        text-align: center;
+    }
+    &__list {
+        margin: 20px auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    &__btns {
+        display: flex;
+        justify-content: space-around;
+    }
+    &__item {
+        margin: 10px;
+    }
+}
