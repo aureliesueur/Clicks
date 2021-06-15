@@ -1,5 +1,6 @@
 $primarycolor: #C7A22D;
 $secondarycolor: red;
+$bkgcolor: #CCC;
 
 .container {
     width: 100%;
@@ -12,4 +13,9 @@ $secondarycolor: red;
     &:hover {
         color: $secondarycolor!important;
     }
+}
+
+.btn:not(:disabled):not(.disabled), button:not(:disabled) {
+    box-shadow: none!important;
+    outline: none!important;
 }

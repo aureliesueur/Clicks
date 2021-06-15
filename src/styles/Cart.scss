@@ -1,49 +1,74 @@
+$primarycolor: #C7A22D;
+$secondarycolor: red;
+
 .cart {
     margin: 30px auto;
     &__title {
-        font-style: 2.5em;
+        font-size: 2em;
         text-align: center;
     }
     &__list {
         margin: 20px auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        
+        text-align: center;
+        vertical-align: middle;
+        border-collapse: collapse;   
     }
     &__item {
-        margin: 10px;
-        min-width: 100%!important;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        & td {
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid #000;
+            height: 60px;
+            width: 150px;
+            padding: 0!important;
+        }
     }
-    &__box {
-        align-self: stretch;
-        display: flex;
-        justify-content: center;
-        margin: 30px;
-        width: 80%;
-        & h2 {
-            font-size: 1.5em;
-            margin-right: 30px;
-            margin-bottom: 0;
-        }
-        & p {
-            font-size: 1.2em;
-            margin-right: 20px;
-            margin-bottom: 0;
-        }
+}
+
+.cartItem {
+    &__title {
+        font-weight: bold!important;
+    }
+    &__price {
+        font-style: italic;
+        font-size: 0.9em!important;
+    }
+    &__totalPrice {
+        font-size: 1em!important;
+    }
+    &__quantity span {
+        margin-left: 10px;
+        margin-right: 10px;
     }
     &__img {
-        max-height: 100px;
-        width: 20%;
+        width: 100%;
         object-fit: cover;
     }
-    &__btn, &__suppressItem {
-        display: block!important;
-        margin: auto!important;
+}
+
+.infos {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    &__title {
+        font-size: 1.3em;
+        color: $secondarycolor;
+        margin-bottom: 20px;
+    }
+    &__message {
+        font-weight: bold;
+        text-align: center;
+        color: $secondarycolor;
+    }
+    &__payment {
+        display: flex;
+        justify-content: space-between; 
+        width: 30%;
+        margin-top: 100px;
+    }
+    &__icon {
+        font-size: 3em;
     }
 
 }

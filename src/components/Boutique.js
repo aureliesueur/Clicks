@@ -7,15 +7,16 @@ import Button from 'react-bootstrap/Button';
 import '../styles/Boutique.scss';
 import '../styles/App.scss';
 import '../lib';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
-import { faInfo } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartPlus, faInfo, faShoppingBasket, faSortDown } from '@fortawesome/free-solid-svg-icons';
+
 
 function Boutique({cart, updateCart}) {
     useEffect(() => {
         getAllProducts()
     }, []);
     const [products, setProducts] = useState([]);
+    const [isProductAdded, updateIsProductAdded] = useState(false);
     function getAllProducts() {
         fetch ("http://localhost:3000/api/cameras")
         .then(response => response.json())
@@ -39,6 +40,8 @@ function Boutique({cart, updateCart}) {
         } else {
         updateCart([...cart, {imageUrl, name, price, quantity: 1}]);
         }
+        updateIsProductAdded(true); 
+        console.log(isProductAdded);
     }
 
     return (
@@ -49,16 +52,26 @@ function Boutique({cart, updateCart}) {
                     <Card key={product.name.toUpperCase()} style={{width:'18rem'}} className="products__item">
                         <Card.Img variant="top" src={product.imageUrl} alt="Image de caméra" />
                         <Card.Body>
-                            <Card.Title>{product.name}</Card.Title>
+                            <Card.Title><h2>{product.name}</h2></Card.Title>
                             <Card.Text>Prix: {product.price / 100} €</Card.Text>
                             <div className="products__btns">
-                                <Button variant="primary" className="btnClassic" onClick={() => addToCart(product.imageUrl,product.name, product.price)}><FontAwesomeIcon icon={faCartPlus} /> Commander en un clic</Button>
-                                <Link to={`/boutique/${product._id}`}><Button className="btnClassic"><FontAwesomeIcon icon={faInfo} /> Détails</Button></Link>
+                                <Button className="btnClassic products__btn" onClick={() => addToCart(product.imageUrl,product.name, product.price)}><FontAwesomeIcon icon={faCartPlus} /> Commander en un clic</Button>
+                                <Link to={`/boutique/${product._id}`} className="products__btn"><Button className="btnClassic products__btn"><FontAwesomeIcon icon={faInfo} /> Détails</Button></Link>
                             </div>
                         </Card.Body>
                     </Card>
                 ))}
             </div>
+            {isProductAdded ? (
+                <div className="products__modal">
+                    <h3>Ce produit a bien été ajouté au panier !</h3>
+                    <p>Souhaitez-vous continuer sur cette page ou visualiser votre panier ?</p>
+                    <Button className="btnClassic" onClick={() => updateIsProductAdded(false)}><FontAwesomeIcon icon={faSortDown}/> Continuer</Button>
+                    <Link to={"/panier"}><Button className="btnClassic"><FontAwesomeIcon icon={faShoppingBasket}/> Panier</Button></Link>   
+                </div>
+            ) : (
+                null
+            )}
         </div>
     );
 }

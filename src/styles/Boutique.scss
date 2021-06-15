@@ -1,8 +1,13 @@
+$primarycolor: #C7A22D;
+$secondarycolor: red;
+$bkgcolor: #CCC;
+
 .products {
     margin: 30px auto;
-    &__title {
+    position: relative;
+    text-align: center;
+    &__title, &__title h2 {
         font-style: 2.5em;
-        text-align: center;
     }
     &__list {
         margin: 20px auto;
@@ -13,9 +18,33 @@
     }
     &__btns {
         display: flex;
-        justify-content: space-around;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        min-width: 100%;
+        font-size: 12px!important;
     }
     &__item {
         margin: 10px;
+    }
+    &__btn, &__btns a {
+        font-size: 12px!important;
+        width: 170px!important;
+        margin-bottom: 10px;
+    }
+    &__modal {
+        position: absolute;
+        top: 30%!important;
+        left: 25%;
+        width: 50%;
+        background-color: $bkgcolor;
+        border: 1px solid #000;
+        padding: 100px;
+        & h3 {
+            color: $secondarycolor;
+        }
+        & .btnClassic {
+            margin-right: 30px;
+        }
     }
 }

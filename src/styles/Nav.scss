@@ -1,3 +1,6 @@
+$primarycolor: #C7A22D;
+$secondarycolor: red;
+
 .menu {
     display: flex;
     flex-direction: row;
@@ -15,6 +18,7 @@
         width: 85%;
         display: flex;
         justify-content: space-evenly;
+        align-items: flex-end;
         list-style-type: none;
         font: Verdana, Georgia, sans-serif;
         text-transform: uppercase;
@@ -26,5 +30,17 @@
         &:hover {
             color: red!important;
         }
+    }
+}
+
+.basket {
+    position: relative;
+    font-size: 1.3rem;
+    &__nb {
+        position: absolute;
+        bottom: 50%;
+        left: 100%;
+        color: $secondarycolor!important;
+        font-size: 1rem;
     }
 }

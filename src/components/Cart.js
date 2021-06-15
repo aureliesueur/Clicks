@@ -1,20 +1,23 @@
 
 import React from 'react';
 import {useEffect} from "react";
-//import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import '../styles/Cart.scss';
 import '../styles/App.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { faMinus } from '@fortawesome/free-solid-svg-icons';
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faMinus, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCcVisa, faCcMastercard, faCcAmex, faPaypal } from '@fortawesome/free-brands-svg-icons';
+
 
 function Cart({cart, updateCart}) {
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart));
+        cart.sort(function(a, b){
+            if(a.name < b.name) { return -1; }
+            if(a.name > b.name) { return 1; }
+            return 0;
+        })
     }, [cart]);
-    const message = cart.length > 0 ? (null) : (<div className="cart__message">Votre panier est vide</div>);
     const totalAmount = cart.reduce(function(total, item) {
         return total + item.price * item.quantity / 100;
     }, 0);
@@ -41,32 +44,40 @@ function Cart({cart, updateCart}) {
     }
     return (
         <div className="cart">
-            <h1 className="cart__title">Votre panier :</h1>
-            <div className="cart__list">
+            <h1 className="cart__title">Votre panier</h1>
+            <table className="cart__list">
                 {cart.map(cartItem => (
-                    <div key={cartItem.name.toUpperCase()} className="cart__item">
-                        <img src={cartItem.imageUrl} alt={`Photo de ${cartItem.name}`} className="cart__img" />
-                        <div className="cart__box">
-                            <h2>{cartItem.name}</h2>
-                            <p>Prix unitaire: {cartItem.price / 100} €</p>
-                            <div className="cart__options">
-                                <Button href="#" variant="primary" className="btnClassic" onClick={() => lowerQuantity(cartItem.imageUrl,cartItem.name, cartItem.price)}><FontAwesomeIcon icon={faMinus} /></Button>
-                                {cartItem.quantity}
-                                <Button href="#" variant="primary" className="btnClassic" onClick={() => raiseQuantity(cartItem.imageUrl,cartItem.name, cartItem.price)}><FontAwesomeIcon icon={faPlus} /></Button>
-                            </div>
-                            <div className="cart__suppressItem">
-                                <Button href="#" variant="primary" className="btnClassic" onClick={() => suppressFromCart(cartItem.name)}><FontAwesomeIcon icon={faTrashAlt} /> Supprimer</Button>
-                            </div>
-                            <p>Prix Total: {cartItem.price * cartItem.quantity / 100} €</p>
-                        </div>
-                    </div>
+                    <tr key={cartItem.name.toUpperCase()} className="cart__item cartItem">
+                        <td><img src={cartItem.imageUrl} alt={`Photo de ${cartItem.name}`} className="cartItem__img" /></td>
+                        <td className="cartItem__title">{cartItem.name}</td>
+                        <td className="cartItem__price">Prix unitaire: {cartItem.price / 100} €</td>
+                        <td className="cartItem__quantity">
+                            <Button href="#" variant="primary" className="btnClassic" onClick={() => lowerQuantity(cartItem.imageUrl,cartItem.name, cartItem.price)}><FontAwesomeIcon icon={faMinus} /></Button>
+                            <span>{cartItem.quantity}</span>
+                            <Button href="#" variant="primary" className="btnClassic" onClick={() => raiseQuantity(cartItem.imageUrl,cartItem.name, cartItem.price)}><FontAwesomeIcon icon={faPlus} /></Button>
+                        </td>
+                        <td className="cartItem__suppress">
+                            <Button href="#" variant="primary" className="btnClassic" onClick={() => suppressFromCart(cartItem.name)}><FontAwesomeIcon icon={faTrashAlt} /> Supprimer</Button>
+                        </td>
+                        <td className="cartItem__totalPrice">Prix Total: {cartItem.price * cartItem.quantity / 100} €</td>
+                    </tr>
                 ))}
-            </div>
-            <div className="cart__infos">
-                <h2>Montant total de votre panier: {totalAmount}</h2>
+            </table>
+
+            { cart.length > 0 ? (
+            <div className="cart__infos infos">
+                <h2 className="infos__title">Montant total de votre panier: {totalAmount} €</h2>
                 <Button href="#" variant="primary" className="btnClassic cart__btn" onClick={emptyCart}>Vider le panier</Button>
-                {message}
+                <div className="infos__payment">
+                    <FontAwesomeIcon icon={faCcVisa} className="infos__icon"/>
+                    <FontAwesomeIcon icon={faCcMastercard} className="infos__icon" />
+                    <FontAwesomeIcon icon={faCcAmex} className="infos__icon" />
+                    <FontAwesomeIcon icon={faPaypal} className="infos__icon"/>         
+                </div>
             </div>
+            ) : (
+            <div className="infos__message">Votre panier est vide.</div>
+            )}
         </div>
     );
 }
