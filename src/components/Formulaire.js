@@ -1,10 +1,12 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import '../styles/Formulaire.scss';
+import '../styles/App.scss';
 
 function Formulaire({cart}) {
     
-    const { register, handleSubmit, formState: {errors}} = useForm();
+    const { register, handleSubmit, formState: {errors}} = useForm({nativeValidation: true});
 
    function submit(data, e) { 
         // Pour empêcher le formulaire d'envoyer les données par défaut sans validation préalable
@@ -51,40 +53,48 @@ function Formulaire({cart}) {
     }
 
     return (
-        <Form className="infos__form" onSubmit={handleSubmit((data, e) => { submit(data, e) })}>
-            <Form.Group className="nom">
-                <Form.Label htmlFor="firstname">Prénom</Form.Label>
-                <Form.Control {...register("firstname", {required: true, minLength:3, pattern:/[A-Za-z]{3}/})} type="text" placeholder="Par exemple Paul" id="firstname"/>
-                {errors.firstname && errors.firstname.type === 'required' && <p>Vous devez obligatoirement entrer votre prénom.</p>}
-                {errors.firstname && errors.firstname.type === 'pattern' && <p>Votre prénom ne doit comporter que des lettres.</p>}
-                {errors.firstname && errors.firstname.type === 'minLength' && <p>Votre prénom est trop court.</p>}
-                <Form.Label htmlFor="lastname">Nom</Form.Label>
-                <Form.Control {...register("lastname", {required: true, minLength:3, pattern:/[A-Za-z]{3}/})} type="text" placeholder="Par exemple Lavigne" id="lastname"/>
-                {errors.lastname && errors.lastname.type === 'required' && <p>Vous devez obligatoirement entrer votre nom.</p>}
-                {errors.lastname && errors.lastname.type === 'pattern' && <p>Votre nom ne doit comporter que des lettres.</p>}
-                {errors.lastname && errors.lastname.type === 'minLength' && <p>Votre nom est trop court.</p>}
-            </Form.Group>
+        <Form noValidate className="infos__form form" onSubmit={handleSubmit((data, e) => { submit(data, e) })}>
+            <div className="form__nomComplet">
+                <Form.Group className="form__prenom">
+                    <Form.Label htmlFor="firstname">Prénom</Form.Label>
+                    <Form.Control {...register("firstname", {required: true, minLength:3, pattern:/[A-Za-z]{3}/})} type="text" placeholder="Par exemple Paul" id="firstname"/>
+                    {errors.firstname && errors.firstname.type === 'required' && <p className="form__error">Vous devez obligatoirement entrer votre prénom.</p>}
+                    {errors.firstname && errors.firstname.type === 'pattern' && <p className="form__error">Votre prénom ne doit comporter que des lettres.</p>}
+                    {errors.firstname && errors.firstname.type === 'minLength' && <p className="form__error">Votre prénom est trop court.</p>}
+                </Form.Group>
+                <Form.Group className="form__nom">
+                    <Form.Label htmlFor="lastname">Nom</Form.Label>
+                    <Form.Control {...register("lastname", {required: true, minLength:3, pattern:/[A-Za-z]{3}/})} type="text" placeholder="Par exemple Lavigne" id="lastname"/>
+                    {errors.lastname && errors.lastname.type === 'required' && <p className="form__error">Vous devez obligatoirement entrer votre nom.</p>}
+                    {errors.lastname && errors.lastname.type === 'pattern' && <p className="form__error">Votre nom ne doit comporter que des lettres.</p>}
+                    {errors.lastname && errors.lastname.type === 'minLength' && <p className="form__error">Votre nom est trop court.</p>}
+                </Form.Group>
+            </div>
 
-            <Form.Group className="adresse">
-                <Form.Label htmlFor="address">Adresse :</Form.Label>
-                <Form.Control {...register("address", {required: true, minLength:3})} type="text" placeholder="Par exemple 12 rue des Ifs" id="address"/>
-                {errors.address && errors.address.type === 'required' && <p>Vous devez obligatoirement entrer votre adresse.</p>}
-                {errors.address && errors.address.type === 'minLength' && <p>Votre adresse est trop courte.</p>}
-                <Form.Label htmlFor="city">Ville :</Form.Label>
-                <Form.Control {...register("city", {required: true, minLength:3, maxLength:20, pattern:/[A-Za-z]{3}/})} type="text" placeholder="Par exemple Lyon" id="city"/>
-                {errors.city && errors.city.type === 'required' && <p>Vous devez obligatoirement entrer votre ville.</p>}
-                {errors.city && errors.city.type === 'pattern' && <p>Votre nom de ville ne doit comporter que des lettres.</p>}
-                {errors.city && errors.city.type === 'minLength' && <p>Votre nom de ville est trop court.</p>}
-            </Form.Group>
+            <div className="form__adresseComplete">
+                <Form.Group className="form__adresse">
+                    <Form.Label htmlFor="address">Adresse</Form.Label>
+                    <Form.Control {...register("address", {required: true, minLength:3})} type="text" placeholder="Par exemple 12 rue des Ifs" id="address"/>
+                    {errors.address && errors.address.type === 'required' && <p className="form__error">Vous devez obligatoirement entrer votre adresse.</p>}
+                    {errors.address && errors.address.type === 'minLength' && <p className="form__error">Votre adresse est trop courte.</p>}
+                </Form.Group>
+                <Form.Group className="form__ville">
+                    <Form.Label htmlFor="city">Ville</Form.Label>
+                    <Form.Control {...register("city", {required: true, minLength:3, maxLength:20, pattern:/[A-Za-z]{3}/})} type="text" placeholder="Par exemple Lyon" id="city"/>
+                    {errors.city && errors.city.type === 'required' && <p className="form__error">Vous devez obligatoirement entrer votre ville.</p>}
+                    {errors.city && errors.city.type === 'pattern' && <p className="form__error">Votre nom de ville ne doit comporter que des lettres.</p>}
+                    {errors.city && errors.city.type === 'minLength' && <p className="form__error">Votre nom de ville est trop court.</p>}
+                </Form.Group>
+            </div>
 
-            <Form.Group>                       
-                <Form.Label htmlFor="email">Email :</Form.Label>
+            <Form.Group className="form__email">                       
+                <Form.Label htmlFor="email">Email</Form.Label>
                 <Form.Control {...register("email", {required: true, minLength:10, maxLength:30, 
                     pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
                     })} type="text" placeholder="Par exemple paul.labiche@sfr.fr" id="email"/>
-                {errors.email && <p>Ceci n'est pas une adresse mail !</p>}
+                {errors.email && <p className="form__error">Ceci n'est pas une adresse mail valide !</p>}
             </Form.Group>
-            <Button variant="primary" type="submit" >
+            <Button className="btnClassic form__btn" type="submit" >
                 Envoyer
             </Button>
         </Form> 

@@ -1,0 +1,29 @@
+$primarycolor: #C7A22D;
+$secondarycolor: red;
+$bkgcolor: #CCC;
+
+.form {
+    & input {
+        font-size: 0.9em;
+        &:focus {
+            box-shadow: none!important;
+            border: 1px solid $secondarycolor!important;
+        }  
+    }
+    &__nomComplet, &__adresseComplete {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__btn {
+        display: block;
+        margin: auto;
+        margin-top: 30px;
+    }
+    &__error {
+        font-style: italic;
+        font-size: 0.8em;
+        color: $secondarycolor;
+        width: 70%;
+        margin: auto;
+    }
+}

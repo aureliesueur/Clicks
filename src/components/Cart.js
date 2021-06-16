@@ -6,7 +6,7 @@ import Formulaire from './Formulaire';
 import '../styles/Cart.scss';
 import '../styles/App.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faMinus, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faMinus, faTrashAlt, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faCcVisa, faCcMastercard, faCcAmex, faPaypal } from '@fortawesome/free-brands-svg-icons';
 
 
@@ -69,8 +69,8 @@ function Cart({cart, updateCart}) {
             { cart.length > 0 ? (
             <div className="cart__infos infos">
                 <h2 className="infos__title">Montant total de votre panier: {totalAmount} €</h2>
-                <Button className="btnClassic cart__btn" onClick={emptyCart}>Vider le panier</Button>
-                <Button className="btnClassic cart__btn" onClick={() =>updateModal(true)}>Valider la commande</Button>
+                <Button className="btnClassic cart__btn" onClick={emptyCart}><FontAwesomeIcon icon={faTrashAlt} /> Vider le panier</Button>
+                <Button className="btnClassic cart__btn" onClick={() =>updateModal(true)}><FontAwesomeIcon icon={faCheck} /> Valider la commande</Button>
                 <div className="infos__payment">
                     <FontAwesomeIcon icon={faCcVisa} className="infos__icon"/>
                     <FontAwesomeIcon icon={faCcMastercard} className="infos__icon" />
