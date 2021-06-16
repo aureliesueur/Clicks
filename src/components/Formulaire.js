@@ -1,8 +1,6 @@
 import React from 'react';
-//import { useState } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-//import { Link } from 'react-router-dom';
 
 function Formulaire({cart}) {
     
@@ -53,33 +51,45 @@ function Formulaire({cart}) {
     }
 
     return (
-        <form className="infos__form" onSubmit={handleSubmit((data, e) => { submit(data, e) })}>
-            <div className="nom">
-                <label htmlFor="firstname">Prénom</label>
-                <input {...register("firstname", {required: true, minLength:3})} type="text" placeholder="Par exemple Paul" id="firstname"/>
-                {errors.firstname && <p>Vous devez entrer au moins trois lettres !</p>}
-                <label htmlFor="lastname">Nom</label>
-                <input {...register("lastname", {required: true, minLength:3})} type="text" placeholder="Par exemple Lavigne" id="lastname"/>
-                {errors.lastname && <p>Vous devez entrer au moins trois lettres !</p>}
-            </div>
+        <Form className="infos__form" onSubmit={handleSubmit((data, e) => { submit(data, e) })}>
+            <Form.Group className="nom">
+                <Form.Label htmlFor="firstname">Prénom</Form.Label>
+                <Form.Control {...register("firstname", {required: true, minLength:3, pattern:/[A-Za-z]{3}/})} type="text" placeholder="Par exemple Paul" id="firstname"/>
+                {errors.firstname && errors.firstname.type === 'required' && <p>Vous devez obligatoirement entrer votre prénom.</p>}
+                {errors.firstname && errors.firstname.type === 'pattern' && <p>Votre prénom ne doit comporter que des lettres.</p>}
+                {errors.firstname && errors.firstname.type === 'minLength' && <p>Votre prénom est trop court.</p>}
+                <Form.Label htmlFor="lastname">Nom</Form.Label>
+                <Form.Control {...register("lastname", {required: true, minLength:3, pattern:/[A-Za-z]{3}/})} type="text" placeholder="Par exemple Lavigne" id="lastname"/>
+                {errors.lastname && errors.lastname.type === 'required' && <p>Vous devez obligatoirement entrer votre nom.</p>}
+                {errors.lastname && errors.lastname.type === 'pattern' && <p>Votre nom ne doit comporter que des lettres.</p>}
+                {errors.lastname && errors.lastname.type === 'minLength' && <p>Votre nom est trop court.</p>}
+            </Form.Group>
 
-            <div className="adresse">
-                <label htmlFor="address">Adresse :</label>
-                <input {...register("address", {required: true, minLength:3})} type="text" placeholder="Par exemple 12 rue des Ifs" id="address"/>
-                {errors.address && <p>Vous devez entrer au moins trois lettres !</p>}
-                <label htmlFor="city">Ville :</label>
-                <input {...register("city", {required: true, minLength:3, maxLength:20})} type="text" placeholder="Par exemple Lyon" id="city"/>
-                {errors.city && <p>Vous devez entrer au moins trois lettres !</p>}
-            </div>
-                                    
-            <label htmlFor="email">Email :</label>
-            <input {...register("email", {required: true, minLength:10, maxLength:30, pattern:"(@)(.+)$ "})} type="text" placeholder="Par exemple paul.labiche@sfr.fr" id="email"/>
-            {errors.email && <p>Ceci n'est pas une adresse mail !</p>}
+            <Form.Group className="adresse">
+                <Form.Label htmlFor="address">Adresse :</Form.Label>
+                <Form.Control {...register("address", {required: true, minLength:3})} type="text" placeholder="Par exemple 12 rue des Ifs" id="address"/>
+                {errors.address && errors.address.type === 'required' && <p>Vous devez obligatoirement entrer votre adresse.</p>}
+                {errors.address && errors.address.type === 'minLength' && <p>Votre adresse est trop courte.</p>}
+                <Form.Label htmlFor="city">Ville :</Form.Label>
+                <Form.Control {...register("city", {required: true, minLength:3, maxLength:20, pattern:/[A-Za-z]{3}/})} type="text" placeholder="Par exemple Lyon" id="city"/>
+                {errors.city && errors.city.type === 'required' && <p>Vous devez obligatoirement entrer votre ville.</p>}
+                {errors.city && errors.city.type === 'pattern' && <p>Votre nom de ville ne doit comporter que des lettres.</p>}
+                {errors.city && errors.city.type === 'minLength' && <p>Votre nom de ville est trop court.</p>}
+            </Form.Group>
+
+            <Form.Group>                       
+                <Form.Label htmlFor="email">Email :</Form.Label>
+                <Form.Control {...register("email", {required: true, minLength:10, maxLength:30, 
+                    pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+                    })} type="text" placeholder="Par exemple paul.labiche@sfr.fr" id="email"/>
+                {errors.email && <p>Ceci n'est pas une adresse mail !</p>}
+            </Form.Group>
             <Button variant="primary" type="submit" >
                 Envoyer
             </Button>
-        </form> 
+        </Form> 
     );
 }
 
 export default Formulaire;
+
