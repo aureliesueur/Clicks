@@ -32,13 +32,13 @@ function Boutique({cart, updateCart}) {
         console.log(allProducts);
         setProducts(allProducts);
     };*/
-    function addToCart(imageUrl, name, price) {
+    function addToCart(imageUrl, name, _id, price) {
         const cameraToAdd = cart.find((camera) => camera.name === name);
         if (cameraToAdd) {
             const cartWithout = cart.filter((camera) => camera.name !== name);
-            updateCart([...cartWithout, {imageUrl, name, price, quantity: cameraToAdd.quantity + 1}])
+            updateCart([...cartWithout, {imageUrl, name, _id, price, quantity: cameraToAdd.quantity + 1}])
         } else {
-        updateCart([...cart, {imageUrl, name, price, quantity: 1}]);
+        updateCart([...cart, {imageUrl, name, _id, price, quantity: 1}]);
         }
         updateIsProductAdded(true); 
         console.log(isProductAdded);
@@ -55,7 +55,7 @@ function Boutique({cart, updateCart}) {
                             <Card.Title><h2>{product.name}</h2></Card.Title>
                             <Card.Text>Prix: {product.price / 100} €</Card.Text>
                             <div className="products__btns">
-                                <Button className="btnClassic products__btn" onClick={() => addToCart(product.imageUrl,product.name, product.price)}><FontAwesomeIcon icon={faCartPlus} /> Commander en un clic</Button>
+                                <Button className="btnClassic products__btn" onClick={() => addToCart(product.imageUrl,product.name, product._id, product.price)}><FontAwesomeIcon icon={faCartPlus} /> Commander en un clic</Button>
                                 <Link to={`/boutique/${product._id}`} className="products__btn"><Button className="btnClassic products__btn"><FontAwesomeIcon icon={faInfo} /> Détails</Button></Link>
                             </div>
                         </Card.Body>

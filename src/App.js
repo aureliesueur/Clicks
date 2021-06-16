@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { useState } from 'react';
+import { useState} from 'react';
 import Nav from './components/Nav';
 import Accueil from './components/Accueil';
 import Apropos from './components/Apropos';
@@ -10,6 +10,7 @@ import Cart from './components/Cart';
 import Blog from './components/Blog';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import Confirmation from './components/Confirmation';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/App.scss';
 
@@ -39,6 +40,7 @@ function App() {
         <Route path="/signup">
           <Signup isLoggedIn={isLoggedIn} updateConnexion={updateConnexion} />
         </Route>
+        <Route path="/confirmation" component={Confirmation} />
       </Router>
     </div>
   );

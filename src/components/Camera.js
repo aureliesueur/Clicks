@@ -28,13 +28,13 @@ function Camera({cart, updateCart}) {
         })
         .catch(error => alert("Erreur:" + error));
     }
-    function addToCart(imageUrl, name, price) {
+    function addToCart(imageUrl, name, _id, price) {
         const cameraToAdd = cart.find((camera) => camera.name === name);
         if (cameraToAdd) {
             const cartWithout = cart.filter((camera) => camera.name !== name);
-            updateCart([...cartWithout, {imageUrl, name, price, quantity: cameraToAdd.quantity + 1}])
+            updateCart([...cartWithout, {imageUrl, name, _id, price, quantity: cameraToAdd.quantity + 1}])
         } else {
-        updateCart([...cart, {imageUrl, name, price, quantity: 1}]);
+        updateCart([...cart, {imageUrl, name, _id, price, quantity: 1}]);
         }
     }
     return (
@@ -44,7 +44,7 @@ function Camera({cart, updateCart}) {
                 <h1 className="camera__title">{camera.name}</h1>
                 <Card.Text className="camera__text">{camera.description}</Card.Text>
                 <Card.Text>Prix: {camera.price / 100} €</Card.Text>
-                <Link to="/panier" class="camera__link"><Button variant="primary" className="camera__btn btnClassic" onClick={() => addToCart(camera.imageUrl,camera.name, camera.price)}><FontAwesomeIcon icon={faCartPlus} /> Commander</Button></Link>
+                <Link to="/panier" class="camera__link"><Button variant="primary" className="camera__btn btnClassic" onClick={() => addToCart(camera.imageUrl,camera.name, camera._id, camera.price)}><FontAwesomeIcon icon={faCartPlus} /> Commander</Button></Link>
                 <div className="camera__lenses lenses">
                     <h2 className="lenses__title">Sélectionnez la lentille de votre choix</h2>
                     <ButtonGroup className="lenses__btn">

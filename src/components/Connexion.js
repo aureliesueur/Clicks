@@ -1,6 +1,6 @@
 
 import React from 'react';
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 //import '../styles/Connexion.scss';
@@ -10,6 +10,11 @@ import { faSignInAlt, faUserPlus, faSignOutAlt, faUser} from '@fortawesome/free-
 
 
 function Connexion({isLoggedIn, updateConnexion}) {
+     //Récupération du user courant
+    useEffect(() => {
+        //getCurrentUser()
+    }, []);
+    const [currentUser, setCurrentUser] = useState({});
     return (
         <div className="connexion">
         { isLoggedIn ? (

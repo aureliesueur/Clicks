@@ -1,7 +1,8 @@
 
-import React from 'react';
-import {useEffect} from "react";
-import Button from 'react-bootstrap/Button';
+import React, { useState, useEffect } from 'react';
+import { Button } from 'react-bootstrap';
+import Formulaire from './Formulaire';
+//import { Link } from 'react-router-dom';
 import '../styles/Cart.scss';
 import '../styles/App.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,6 +19,7 @@ function Cart({cart, updateCart}) {
             return 0;
         })
     }, [cart]);
+    const [isModalShown, updateModal] = useState(false);
     const totalAmount = cart.reduce(function(total, item) {
         return total + item.price * item.quantity / 100;
     }, 0);
@@ -28,18 +30,18 @@ function Cart({cart, updateCart}) {
         const filteredCart = cart.filter(camera => camera.name !== name)
         updateCart([...filteredCart]);
     }
-    function raiseQuantity(imageUrl, name, price) {
+    function raiseQuantity(imageUrl, name, _id, price) {
         const cameraToAdd = cart.find((camera) => camera.name === name);
         const cartWithout = cart.filter((camera) => camera.name !== name);
-        updateCart([...cartWithout, {imageUrl, name, price, quantity: cameraToAdd.quantity + 1}]);
+        updateCart([...cartWithout, {imageUrl, name, price, _id, quantity: cameraToAdd.quantity + 1}]);
     }
-    function lowerQuantity(imageUrl, name, price) {
+    function lowerQuantity(imageUrl, name, _id, price) {
         const cameraToAdd = cart.find((camera) => camera.name === name);
         const cartWithout = cart.filter((camera) => camera.name !== name);
         if(cameraToAdd.quantity <= 1) {
             suppressFromCart(cameraToAdd.name);
         } else {
-            updateCart([...cartWithout, {imageUrl, name, price, quantity: cameraToAdd.quantity - 1}]);
+            updateCart([...cartWithout, {imageUrl, name, _id, price, quantity: cameraToAdd.quantity - 1}]);
         }
     }
     return (
@@ -48,13 +50,13 @@ function Cart({cart, updateCart}) {
             <table className="cart__list">
                 {cart.map(cartItem => (
                     <tr key={cartItem.name.toUpperCase()} className="cart__item cartItem">
-                        <td><img src={cartItem.imageUrl} alt={`Photo de ${cartItem.name}`} className="cartItem__img" /></td>
+                        <td><img src={cartItem.imageUrl} alt={`${cartItem.name}`} className="cartItem__img" /></td>
                         <td className="cartItem__title">{cartItem.name}</td>
                         <td className="cartItem__price">Prix unitaire: {cartItem.price / 100} €</td>
                         <td className="cartItem__quantity">
-                            <Button href="#" variant="primary" className="btnClassic" onClick={() => lowerQuantity(cartItem.imageUrl,cartItem.name, cartItem.price)}><FontAwesomeIcon icon={faMinus} /></Button>
+                            <Button href="#" variant="primary" className="btnClassic" onClick={() => lowerQuantity(cartItem.imageUrl,cartItem.name, cartItem._id, cartItem.price)}><FontAwesomeIcon icon={faMinus} /></Button>
                             <span>{cartItem.quantity}</span>
-                            <Button href="#" variant="primary" className="btnClassic" onClick={() => raiseQuantity(cartItem.imageUrl,cartItem.name, cartItem.price)}><FontAwesomeIcon icon={faPlus} /></Button>
+                            <Button href="#" variant="primary" className="btnClassic" onClick={() => raiseQuantity(cartItem.imageUrl,cartItem.name, cartItem._id, cartItem.price)}><FontAwesomeIcon icon={faPlus} /></Button>
                         </td>
                         <td className="cartItem__suppress">
                             <Button href="#" variant="primary" className="btnClassic" onClick={() => suppressFromCart(cartItem.name)}><FontAwesomeIcon icon={faTrashAlt} /> Supprimer</Button>
@@ -67,13 +69,17 @@ function Cart({cart, updateCart}) {
             { cart.length > 0 ? (
             <div className="cart__infos infos">
                 <h2 className="infos__title">Montant total de votre panier: {totalAmount} €</h2>
-                <Button href="#" variant="primary" className="btnClassic cart__btn" onClick={emptyCart}>Vider le panier</Button>
+                <Button className="btnClassic cart__btn" onClick={emptyCart}>Vider le panier</Button>
+                <Button className="btnClassic cart__btn" onClick={() =>updateModal(true)}>Valider la commande</Button>
                 <div className="infos__payment">
                     <FontAwesomeIcon icon={faCcVisa} className="infos__icon"/>
                     <FontAwesomeIcon icon={faCcMastercard} className="infos__icon" />
                     <FontAwesomeIcon icon={faCcAmex} className="infos__icon" />
                     <FontAwesomeIcon icon={faPaypal} className="infos__icon"/>         
                 </div>
+                { isModalShown ? (
+                    <Formulaire cart={cart} />
+                ) : null }
             </div>
             ) : (
             <div className="infos__message">Votre panier est vide.</div>
