@@ -1,27 +1,23 @@
 import React from 'react';
-import { useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-//import { useForm } from 'react-hook-form';
+//import { useState } from 'react';
+import { Button } from 'react-bootstrap';
+import { useForm } from 'react-hook-form';
+//import { Link } from 'react-router-dom';
 
 function Formulaire({cart}) {
-    const [inputLastname, setInputLastname] = useState('');
-    const [inputFirstname, setInputFirstname] = useState('');
-    const [inputEmail, setInputEmail] = useState('');
-    const [inputAddress, setInputAddress] = useState('');
-    const [inputCity, setInputCity] = useState('');
-    //const { register } = useForm();
+    
+    const { register, handleSubmit, formState: {errors}} = useForm();
 
-    function handleSubmit(e) { 
+   function submit(data, e) { 
         // Pour empêcher le formulaire d'envoyer les données par défaut sans validation préalable
         e.preventDefault();
         //Récupération des valeurs entrées par l'utilisateur
         let contact = { 
-            firstName: {inputFirstname}.inputFirstname,
-            lastName: {inputLastname}.inputLastname,
-            address: {inputAddress}.inputAddress,
-            city: {inputCity}.inputCity,
-            email: {inputEmail}.inputEmail
+            firstName: data.firstname,
+            lastName: data.lastname,
+            address: data.address,
+            city: data.city,
+            email: data.email
         };
         //Récupération des données du panier - id des produits commandés - sous forme de tableau de strings
         let products = cart.map(item => item._id);
@@ -57,41 +53,32 @@ function Formulaire({cart}) {
     }
 
     return (
-        <Form className="infos__form">
+        <form className="infos__form" onSubmit={handleSubmit((data, e) => { submit(data, e) })}>
             <div className="nom">
-                <Form.Group controlId="firstName">
-                    <Form.Label>Prénom</Form.Label>
-                    <Form.Control type="text" placeholder="Par exemple Paul" value={inputFirstname} onChange={(e) => setInputFirstname(e.target.value)}/>
-                </Form.Group>
-                <Form.Group controlId="lastName">
-                    <Form.Label>Nom</Form.Label>
-                    <Form.Control type="text" placeholder="Par exemple Lavigne" value={inputLastname} onChange={(e) => setInputLastname(e.target.value)} />
-                </Form.Group>
+                <label htmlFor="firstname">Prénom</label>
+                <input {...register("firstname", {required: true, minLength:3})} type="text" placeholder="Par exemple Paul" id="firstname"/>
+                {errors.firstname && <p>Vous devez entrer au moins trois lettres !</p>}
+                <label htmlFor="lastname">Nom</label>
+                <input {...register("lastname", {required: true, minLength:3})} type="text" placeholder="Par exemple Lavigne" id="lastname"/>
+                {errors.lastname && <p>Vous devez entrer au moins trois lettres !</p>}
             </div>
 
             <div className="adresse">
-                <Form.Group controlId="address">
-                    <Form.Label>Adresse</Form.Label>
-                    <Form.Control type="text" placeholder="Par exemple 12 rue des Ifs" value={inputAddress} onChange={(e) => setInputAddress(e.target.value)}/>
-                </Form.Group>
-                <Form.Group controlId="city">
-                    <Form.Label>Ville</Form.Label>
-                    <Form.Control type="text" placeholder="Par exemple Lyon" value={inputCity} onChange={(e) => setInputCity(e.target.value)} />
-                </Form.Group>
+                <label htmlFor="address">Adresse :</label>
+                <input {...register("address", {required: true, minLength:3})} type="text" placeholder="Par exemple 12 rue des Ifs" id="address"/>
+                {errors.address && <p>Vous devez entrer au moins trois lettres !</p>}
+                <label htmlFor="city">Ville :</label>
+                <input {...register("city", {required: true, minLength:3, maxLength:20})} type="text" placeholder="Par exemple Lyon" id="city"/>
+                {errors.city && <p>Vous devez entrer au moins trois lettres !</p>}
             </div>
                                     
-            <Form.Group controlId="email">
-                <Form.Label>Adresse mail</Form.Label>
-                <Form.Control type="email" placeholder="Par exemple paul.lavigne@sfr.fr" value={inputEmail} onChange={(e) => setInputEmail(e.target.value)}/>
-                <Form.Text className="text-muted">
-                Nous ne communiquerons votre adresse mail à personne.
-                </Form.Text>
-            </Form.Group>
-
-            <Link to="/"><Button variant="primary" type="submit" onClick={(e) => handleSubmit(e)}>
+            <label htmlFor="email">Email :</label>
+            <input {...register("email", {required: true, minLength:10, maxLength:30, pattern:"(@)(.+)$ "})} type="text" placeholder="Par exemple paul.labiche@sfr.fr" id="email"/>
+            {errors.email && <p>Ceci n'est pas une adresse mail !</p>}
+            <Button variant="primary" type="submit" >
                 Envoyer
-            </Button></Link>
-        </Form>
+            </Button>
+        </form> 
     );
 }
 
