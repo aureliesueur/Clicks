@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import '../styles/Confirmation.scss';
 import '../styles/App.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 function Confirmation() {
     useEffect(() => {
@@ -23,6 +25,7 @@ function Confirmation() {
             <p>Vous recevrez un mail de confirmation dans quelques instants.</p>
             <h2 className="confirmation__subtitle">Votre numéro de commande est :<br/>{orderId}</h2>
             <h3 className="confirmation__subtitle">Vous avez réglé un montant total de : <span>{price} €</span></h3>
+            <Link to={"/"}><Button className="btnClassic confirmation__return"><FontAwesomeIcon icon={faChevronLeft}/> Retour</Button></Link>
         </div>
     );
 }

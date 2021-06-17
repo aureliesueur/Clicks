@@ -1,0 +1,15 @@
+$primarycolor: #C7A22D;
+$secondarycolor: red;
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    background-color: #000;
+    padding: 40px;
+    color: #FFF;
+    &__logo {
+        width: 15%;
+        margin-right: 30px;
+    }
+}

@@ -1,0 +1,44 @@
+$primarycolor: #C7A22D;
+$secondarycolor: red;
+$bkgcolor: #CCC;
+
+.connexion {
+    &__connect, &__deconnect {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 150px;
+    }
+    &__deconnect {
+        position: relative;
+    }
+    &__infos {
+        font-size: 0.9em;
+        background-color: $bkgcolor;
+        border: 1px solid $secondarycolor;
+        padding: 20px;
+        position: absolute;
+        top: 100%;
+        width: 200%;
+        z-index: 2;
+        line-height: 15px;
+        & span {
+            font-weight: bold;
+        }
+    }
+    &__btn {
+        background-color: #FFF!important;
+        margin-bottom: 10px;
+        color: #000!important;
+        font-size: 0.7em!important;
+        border: 1px solid #000!important;
+        &:hover {
+            color: $secondarycolor!important;
+        }
+    }
+    &__close {
+        float: right;
+    }
+}
+
+

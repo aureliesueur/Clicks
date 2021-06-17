@@ -4,11 +4,11 @@ import { useForm } from 'react-hook-form';
 import '../styles/Formulaire.scss';
 import '../styles/App.scss';
 
-function Formulaire({cart}) {
+function Formulaire({cart, updateCart}) {
     
     const { register, handleSubmit, formState: {errors}} = useForm({nativeValidation: true});
 
-   function submit(data, e) { 
+    function submit(data, e) { 
         // Pour empêcher le formulaire d'envoyer les données par défaut sans validation préalable
         e.preventDefault();
         //Récupération des valeurs entrées par l'utilisateur
@@ -49,11 +49,13 @@ function Formulaire({cart}) {
         const totalCart = cart.reduce(function(total, item) {
             return total + item.price * item.quantity / 100;
         }, 0); 
+        updateCart([]);
         window.location.href = "/confirmation?price=" + totalCart;
     }
 
     return (
-        <Form noValidate className="infos__form form" onSubmit={handleSubmit((data, e) => { submit(data, e) })}>
+        <Form className="infos__form form" onSubmit={handleSubmit((data, e) => { submit(data, e) })}>
+            <h2 className="form__title">Pour commander sans vous connecter ou vous inscrire, merci de remplir les champs suivants :</h2>
             <div className="form__nomComplet">
                 <Form.Group className="form__prenom">
                     <Form.Label htmlFor="firstname">Prénom</Form.Label>

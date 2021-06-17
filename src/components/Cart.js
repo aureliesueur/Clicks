@@ -1,8 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import { Button } from 'react-bootstrap';
 import Formulaire from './Formulaire';
-//import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 import '../styles/Cart.scss';
 import '../styles/App.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -78,7 +77,7 @@ function Cart({cart, updateCart}) {
                     <FontAwesomeIcon icon={faPaypal} className="infos__icon"/>         
                 </div>
                 { isModalShown ? (
-                    <Formulaire cart={cart} />
+                    <Formulaire cart={cart} updateCart={updateCart} />
                 ) : null }
             </div>
             ) : (

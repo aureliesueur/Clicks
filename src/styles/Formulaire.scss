@@ -10,6 +10,11 @@ $bkgcolor: #CCC;
             border: 1px solid $secondarycolor!important;
         }  
     }
+    &__title {
+        text-align: center;
+        font-size: 1.5em!important;
+        margin-bottom: 30px;
+    }
     &__nomComplet, &__adresseComplete {
         display: flex;
         justify-content: space-between;

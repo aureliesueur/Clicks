@@ -1,31 +1,37 @@
 
 import React from 'react';
-import {useEffect, useState} from "react";
+import { useState } from "react";
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-//import '../styles/Connexion.scss';
-import '../styles/App.scss';
+import '../styles/Connexion.scss';
+//import '../styles/App.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignInAlt, faUserPlus, faSignOutAlt, faUser} from '@fortawesome/free-solid-svg-icons';
+import { faSignInAlt, faUserPlus, faSignOutAlt, faUser, faTimes} from '@fortawesome/free-solid-svg-icons';
 
 
-function Connexion({isLoggedIn, updateConnexion}) {
-     //Récupération du user courant
-    useEffect(() => {
-        //getCurrentUser()
-    }, []);
-    const [currentUser, setCurrentUser] = useState({});
+function Connexion({isLoggedIn, updateConnexion, currentUser}) {
+    const [isAccountShown, setIsAccountShown] = useState(false);
     return (
         <div className="connexion">
         { isLoggedIn ? (
             <div className="connexion__deconnect">
-                <Button href="#" className="btnClassic connexion__btn" onClick={() => updateConnexion(false)}><FontAwesomeIcon icon={faSignOutAlt} /> Déconnexion</Button>
-                <Button href="#" className="btnClassic connexion__btn"><FontAwesomeIcon icon={faUser} /> Compte</Button>
+                <Button className="connexion__btn" onClick={() => updateConnexion(false)}><FontAwesomeIcon icon={faSignOutAlt} /> Déconnexion</Button>
+                <Button className="connexion__btn" onClick={() => setIsAccountShown(!isAccountShown)}><FontAwesomeIcon icon={faUser} /> Compte</Button>
+                { (isAccountShown === true) ? (
+                    <div className="connexion__infos">
+                        <FontAwesomeIcon icon={faTimes} className="connexion__close" onClick={() => setIsAccountShown(!isAccountShown)} />
+                        <p><span>Prénom:</span> {currentUser.FirstName}</p>
+                        <p><span>Nom:</span> {currentUser.LastName}</p>
+                        <p><span>Email:</span> {currentUser.EmailAddress}</p>
+                        <p><span>Adresse:</span> {currentUser.Address}, {currentUser.PostCode} {currentUser.City}</p>
+                        <p><span>Téléphone:</span> {currentUser.Phone}</p>
+                    </div>
+                ) : null }
             </div>
             ) : (
             <div className="connexion__connect">
-                 <Link to="/login" className="connexion__link"><Button className="btnClassic connexion__btn"><FontAwesomeIcon icon={faSignInAlt} /> Connexion</Button></Link>
-                 <Link to="/signup" className="connexion__link"><Button className="btnClassic connexion__btn"><FontAwesomeIcon icon={faUserPlus} /> Inscription</Button></Link>
+                 <Link to="/login" className="connexion__link"><Button className="connexion__btn"><FontAwesomeIcon icon={faSignInAlt} /> Connexion</Button></Link>
+                 <Link to="/signup" className="connexion__link"><Button className="connexion__btn"><FontAwesomeIcon icon={faUserPlus} /> Inscription</Button></Link>
             </div>
             )
         }

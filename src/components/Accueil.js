@@ -12,7 +12,8 @@ function Accueil() {
     <div className="diapo">
       <div className="diapo__title">
         <h1 >Bienvenue sur <span>Clicks</span></h1>
-        <h2>Découvrez notre sélection d'appareils photo vintage.</h2>
+        <h2>Avis aux fan de l'argentique... Pour compléter votre collection, ou juste pour la déco, craquez pour le look rétro de nos appareils vintage, chinés rien que pour vous, au gré des brocantes.<br/>
+        Click click, c'est dans la boite! </h2>
         <Link to={"/boutique"}><Button className="btnClassic diapo__btn">Entrez <FontAwesomeIcon icon={faSortDown} className="diapo__icon" /></Button></Link>
       </div>
       <Diaporama />

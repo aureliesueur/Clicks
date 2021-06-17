@@ -1,0 +1,70 @@
+$primarycolor: #C7A22D;
+$secondarycolor: red;
+$bkgcolor: #CCC;
+
+.login, .signup {
+    width: 70%;
+    margin: 50px auto;
+    padding: 70px 100px;
+    background-color: $bkgcolor;
+    border: 1px solid #000;
+    position: relative;
+    & input {
+        font-size: 0.9em;
+        &:focus {
+            box-shadow: none!important;
+            border: 1px solid $secondarycolor!important;
+        }  
+    }
+    &__title {
+        text-align: center;
+        width: 80%;
+        margin: auto;
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+    &__text {
+        font-style: italic;
+    }
+    &__btn {
+        display: block!important;
+        margin: auto!important;
+        margin-top: 50px!important;
+    }
+    &__link:hover {
+        text-decoration: none!important;
+    }
+    &__msg {
+        font-style: italic;
+        font-size: 0.8em;
+        color: $secondarycolor;
+    }
+}
+
+.welcome {
+    position: absolute;
+    width: 60%;
+    margin-left: 10%;
+    top: 20%;
+    background-color: #FFF;
+    border: 1px solid $secondarycolor;
+    padding: 70px;
+    &__text {
+        font-weight: bold;
+        text-align: center;
+    }
+    &__btn {
+        display: block!important;
+        margin: auto!important;
+        margin-top: 20px!important;
+    }
+    &__close {
+        font-size: 1.2em;
+        color: #000;
+        position: absolute;
+        top: 5%;
+        right: 5%;
+
+    }
+
+}
