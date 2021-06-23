@@ -4,11 +4,12 @@ import { useForm } from 'react-hook-form';
 import '../styles/Formulaire.scss';
 import '../styles/App.scss';
 
-function Formulaire({cart, updateCart, currentUser, setCurrentUser}) {
+function Formulaire({cart, updateCart, currentUser, isLoggedIn }) {
     
     const { register, handleSubmit, formState: {errors}} = useForm({nativeValidation: true});
-    const savedUser = localStorage.getItem('user');
-    setCurrentUser(savedUser);
+    const savedUser = JSON.parse(localStorage.getItem('user'));
+    //console.log(currentUser);
+    
     function submit(data, e) { 
         // Pour empêcher le formulaire d'envoyer les données par défaut sans validation préalable
         e.preventDefault();
@@ -28,17 +29,18 @@ function Formulaire({cart, updateCart, currentUser, setCurrentUser}) {
         sendForm(order);
     } 
 
-    function submitIfUser() { 
+    function submitIfUser(e) { 
         // Pour empêcher le formulaire d'envoyer les données par défaut sans validation préalable
-        //e.preventDefault();
-        //Récupération des infos de l'utilisateur courant
+        e.preventDefault();
+        //Récupération des valeurs entrées par l'utilisateur
         let contact = { 
-            firstName: currentUser.FirstName,
-            lastName: currentUser.LastName,
-            address: currentUser.Address,
-            city: currentUser.City,
-            email: currentUser.EmailAddress
+            firstName: savedUser.FirstName,
+            lastName: savedUser.LastName,
+            address: savedUser.Address,
+            city: savedUser.City,
+            email: savedUser.EmailAddress
         };
+        console.log(contact);
         //Récupération des données du panier - id des produits commandés - sous forme de tableau de strings
         let products = cart.map(item => item._id);
         let order = {contact, products};
@@ -76,8 +78,8 @@ function Formulaire({cart, updateCart, currentUser, setCurrentUser}) {
 
     return (
         <div>
-            { currentUser ? (
-                <Form className="infos__form form" onSubmit={handleSubmit(() => { submitIfUser() })}>
+            { isLoggedIn ? (
+                <Form className="infos__form form" onSubmit={submitIfUser} >
                 <h2 className="form__title">Merci de valider les informations suivantes :</h2>
                 <div className="form__nomComplet">
                     <Form.Group className="form__prenom">

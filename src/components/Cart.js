@@ -9,7 +9,7 @@ import { faPlus, faMinus, faTrashAlt, faCheck } from '@fortawesome/free-solid-sv
 import { faCcVisa, faCcMastercard, faCcAmex, faPaypal } from '@fortawesome/free-brands-svg-icons';
 
 
-function Cart({cart, updateCart, currentUser, setCurrentUser}) {
+function Cart({cart, updateCart, currentUser, setCurrentUser, isLoggedIn}) {
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart));
         cart.sort(function(a, b){
@@ -79,7 +79,7 @@ function Cart({cart, updateCart, currentUser, setCurrentUser}) {
                     <FontAwesomeIcon icon={faPaypal} className="infos__icon"/>         
                 </div>
                 { isModalShown ? (
-                    <Formulaire cart={cart} updateCart={updateCart} currentUser={currentUser} setCurrentUser={setCurrentUser} />
+                    <Formulaire cart={cart} updateCart={updateCart} currentUser={currentUser} setCurrentUser={setCurrentUser} isLoggedIn={isLoggedIn} />
                 ) : null }
             </div>
             ) : (

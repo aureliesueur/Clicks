@@ -38,7 +38,7 @@ function App() {
           <Camera cart={cart} updateCart={updateCart} />
         </Route>
         <Route path="/panier">
-            <Cart cart={cart} updateCart={updateCart} currentUser={currentUser} setCurrentUser={setCurrentUser} />
+            <Cart cart={cart} updateCart={updateCart} currentUser={currentUser} setCurrentUser={setCurrentUser} isLoggedIn={isLoggedIn} />
         </Route>
         <Route path="/blog" component={Blog} />
         <Route path="/login">
