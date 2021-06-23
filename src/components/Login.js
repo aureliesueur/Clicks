@@ -37,6 +37,8 @@ function Login({ isLoggedIn, updateConnexion, currentUser, setCurrentUser }) {
         console.log(isPasswordOk);
         if (isEmailKnown === true && isPasswordOk === true) {
             updateConnexion(true); 
+            localStorage.setItem('login', true);
+            localStorage.setItem("user", JSON.stringify(currentUser));
             updateMessage(1);
         } else {
             updateConnexion(false);

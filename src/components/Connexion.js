@@ -9,13 +9,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignInAlt, faUserPlus, faSignOutAlt, faUser, faTimes} from '@fortawesome/free-solid-svg-icons';
 
 
-function Connexion({isLoggedIn, updateConnexion, currentUser}) {
+function Connexion({isLoggedIn, updateConnexion, currentUser, setCurrentUser}) {
+
     const [isAccountShown, setIsAccountShown] = useState(false);
+    function disconnect() {
+        updateConnexion(false);
+        setCurrentUser({ });
+        localStorage.clear();
+    }
     return (
         <div className="connexion">
         { isLoggedIn ? (
             <div className="connexion__deconnect">
-                <Button className="connexion__btn" onClick={() => updateConnexion(false)}><FontAwesomeIcon icon={faSignOutAlt} /> Déconnexion</Button>
+                <Button className="connexion__btn" onClick={disconnect}><FontAwesomeIcon icon={faSignOutAlt} /> Déconnexion</Button>
                 <Button className="connexion__btn" onClick={() => setIsAccountShown(!isAccountShown)}><FontAwesomeIcon icon={faUser} /> Compte</Button>
                 { (isAccountShown === true) ? (
                     <div className="connexion__infos">

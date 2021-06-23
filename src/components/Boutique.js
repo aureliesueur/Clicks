@@ -50,7 +50,7 @@ function Boutique({cart, updateCart}) {
             <div className="products__list">
                 {products.take().map(product => (
                     <Card key={product.name.toUpperCase()} style={{width:'18rem'}} className="products__item">
-                        <Card.Img variant="top" src={product.imageUrl} alt="Image de caméra" />
+                        <Card.Img variant="top" className="products__img" src={product.imageUrl} alt="Image de caméra" />
                         <Card.Body>
                             <Card.Title><h2>{product.name}</h2></Card.Title>
                             <Card.Text>Prix: {product.price / 100} €</Card.Text>

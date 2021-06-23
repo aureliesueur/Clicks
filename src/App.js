@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { useState} from 'react';
+import { useState } from "react";
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Accueil from './components/Accueil';
@@ -17,9 +17,14 @@ import './styles/App.scss';
 
 function App() {
   const savedCart = JSON.parse(localStorage.getItem('cart'));
+  const savedUser = JSON.parse(localStorage.getItem('user'));
+  const savedConnection = JSON.parse(localStorage.getItem('login'));
   const [cart, updateCart] = useState(savedCart ? savedCart : []);
-  const [isLoggedIn, updateConnexion] = useState(false);
-  const [currentUser, setCurrentUser] = useState({});
+  const [isLoggedIn, updateConnexion] = useState(savedConnection ? true : false);
+  const [currentUser, setCurrentUser] = useState(savedUser ? savedUser : {});
+  console.log(savedUser);
+  console.log(savedConnection);
+
   return (
     <div className="container">
       <Router>
@@ -33,7 +38,7 @@ function App() {
           <Camera cart={cart} updateCart={updateCart} />
         </Route>
         <Route path="/panier">
-            <Cart cart={cart} updateCart={updateCart} />
+            <Cart cart={cart} updateCart={updateCart} currentUser={currentUser} setCurrentUser={setCurrentUser} />
         </Route>
         <Route path="/blog" component={Blog} />
         <Route path="/login">

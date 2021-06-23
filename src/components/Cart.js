@@ -9,7 +9,7 @@ import { faPlus, faMinus, faTrashAlt, faCheck } from '@fortawesome/free-solid-sv
 import { faCcVisa, faCcMastercard, faCcAmex, faPaypal } from '@fortawesome/free-brands-svg-icons';
 
 
-function Cart({cart, updateCart}) {
+function Cart({cart, updateCart, currentUser, setCurrentUser}) {
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart));
         cart.sort(function(a, b){
@@ -47,6 +47,7 @@ function Cart({cart, updateCart}) {
         <div className="cart">
             <h1 className="cart__title">Votre panier</h1>
             <table className="cart__list">
+                <tbody>
                 {cart.map(cartItem => (
                     <tr key={cartItem.name.toUpperCase()} className="cart__item cartItem">
                         <td><img src={cartItem.imageUrl} alt={`${cartItem.name}`} className="cartItem__img" /></td>
@@ -63,6 +64,7 @@ function Cart({cart, updateCart}) {
                         <td className="cartItem__totalPrice">Prix Total: {cartItem.price * cartItem.quantity / 100} €</td>
                     </tr>
                 ))}
+                </tbody>
             </table>
 
             { cart.length > 0 ? (
@@ -77,7 +79,7 @@ function Cart({cart, updateCart}) {
                     <FontAwesomeIcon icon={faPaypal} className="infos__icon"/>         
                 </div>
                 { isModalShown ? (
-                    <Formulaire cart={cart} updateCart={updateCart} />
+                    <Formulaire cart={cart} updateCart={updateCart} currentUser={currentUser} setCurrentUser={setCurrentUser} />
                 ) : null }
             </div>
             ) : (

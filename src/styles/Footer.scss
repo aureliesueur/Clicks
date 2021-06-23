@@ -11,5 +11,20 @@ $secondarycolor: red;
     &__logo {
         width: 15%;
         margin-right: 30px;
+        object-fit: contain;
+    }
+    &__menu {
+        list-style-type: none;
+        color: $primarycolor;
+        font-weight: bold;
+        & li {
+            color: #FFF;
+            font-weight: normal;
+        }
+    }
+    &__icon {
+        color: $primarycolor;
+        font-size: 1.2em;
+        margin-right: 10px;
     }
 }

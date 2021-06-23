@@ -12,17 +12,18 @@ $bkgcolor: #CCC;
     }
     &__title {
         text-align: center;
-        font-size: 1.5em!important;
+        font-size: 1.3em!important;
         margin-bottom: 30px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
     &__nomComplet, &__adresseComplete {
         display: flex;
         justify-content: space-between;
     }
     &__btn {
-        display: block;
-        margin: auto;
-        margin-top: 30px;
+        display: block!important;
+        margin: auto!important;
+        margin-top: 30px!important;
     }
     &__error {
         font-style: italic;

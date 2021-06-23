@@ -1,8 +1,8 @@
 import React from 'react';
 import '../styles/Footer.scss';
-import logo from '../assets/logo.png';
+import logo2 from '../assets/logo2.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
+import { faPhoneSquare, faFax, faMapMarkerAlt, faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons';
 
 function Footer() {
   
@@ -14,7 +14,13 @@ function Footer() {
             <li>Boutique</li>
             <li>Blog</li>
         </ul>
-        <img src={logo} alt="logo Clicks" className="footer__logo" />
+        <div className="footer__coordonnees">
+            <p><FontAwesomeIcon icon={faMapMarkerAlt} className="footer__icon" /> 12, quai de la Mégisserie 75001 Paris</p>
+            <p><FontAwesomeIcon icon={faPhoneSquare} className="footer__icon" /> 01 45 68 74 34</p>
+            <p><FontAwesomeIcon icon={faFax} className="footer__icon" /> 01 45 68 74 30</p>
+            <p><FontAwesomeIcon icon={faEnvelopeSquare} className="footer__icon" /> contact@clicks.vintage.com</p>
+        </div>
+        <img src={logo2} alt="logo Clicks" className="footer__logo" />
       
     </footer>
   );

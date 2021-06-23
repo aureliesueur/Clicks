@@ -6,8 +6,12 @@ $bkgcolor: #CCC;
     margin: 30px auto;
     position: relative;
     text-align: center;
-    &__title, &__title h2 {
-        font-style: 2.5em;
+    &__title {
+        font-size: 3em;
+        margin: 50px auto;
+        & h2 {
+            font-size: 2em;
+        }
     }
     &__list {
         margin: 20px auto;
@@ -26,6 +30,23 @@ $bkgcolor: #CCC;
     }
     &__item {
         margin: 10px;
+        position: relative;
+        &::before {
+            content: "";
+            position: absolute;
+            z-index: -10;
+            top: 8px;
+	        left: 8px;
+	        width: 50%;
+	        height: 170px;
+	        box-shadow: -14px 0 10px darken($bkgcolor, 20%);
+	        transform: rotate(-5deg);
+        }
+    }
+    &__img {
+        height: 200px!important;
+        //width: 100%!important;
+        object-fit: cover!important;
     }
     &__btn, &__btns a {
         font-size: 12px!important;

@@ -1,0 +1,17 @@
+$primarycolor: #C7A22D;
+$secondarycolor: red;
+$bkgcolor: #CCC;
+
+
+.blog {
+    margin: 60px;
+    &__title {
+        font-size: 3em;
+        text-align: center;
+        margin: 30px auto;
+    }
+    &__article h2 {
+        font-size: 2em;
+    }
+}
+   

@@ -7,7 +7,7 @@ function Diaporama() {
         <Carousel.Item>
             <img
             className="d-block w-100"
-            src="http://localhost:3000/images/vcam_1.jpg"
+            src="http://localhost:3000/images/vcam_2.jpg"
             alt="First slide"
             />
             <Carousel.Caption>
@@ -17,7 +17,7 @@ function Diaporama() {
         <Carousel.Item>
             <img
             className="d-block w-100"
-            src="http://localhost:3000/images/vcam_2.jpg"
+            src="http://localhost:3000/images/vcam_1.jpg"
             alt="Second slide"
             />
             <Carousel.Caption>
@@ -27,7 +27,7 @@ function Diaporama() {
         <Carousel.Item>
             <img
             className="d-block w-100"
-            src="http://localhost:3000/images/vcam_3.jpg"
+            src="http://localhost:3000/images/vcam_4.jpg"
             alt="Third slide"
             />
             <Carousel.Caption>

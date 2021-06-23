@@ -1,11 +1,25 @@
 $primarycolor: #C7A22D;
 $secondarycolor: red;
+$bkgcolor: #CCC;
+
 
 .camera {
     margin: 70px auto;
     border: 2px solid #000;
     padding: 5px 5px 0 5px;
     min-width: 50%!important;
+    position: relative;
+    &::before {
+        content: "";
+        position: absolute;
+        z-index: -10;
+        top: 15px;
+        left: 15px;
+        width: 50%;
+        height: 350px;
+        box-shadow: -20px 0 10px darken($bkgcolor, 30%);
+        transform: rotate(-3deg);
+    }
     &__body {
         margin: 10px 30px;
     }
@@ -38,6 +52,9 @@ $secondarycolor: red;
         color: $secondarycolor;
         margin-bottom: 20px;
         margin-top: 40px;
+    }
+    & h2 {
+        font-family:Verdana, "Helvetica Neue", Arial, sans-serif; 
     }
     &__btn, &__btn Button {
         background-color: #BBB;
