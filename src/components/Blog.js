@@ -9,7 +9,7 @@ import Card from 'react-bootstrap/Card';
 function Blog() {
   const articles = [
     {
-      titre: "Photo – Le rétro, 10 ans que ça dure et toujours à la page !",
+      titre: "Le rétro, 10 ans que ça dure et toujours à la page !",
       imageUrl: article1,
       image: "Image rétro",
       auteur: "Céline Nebor",

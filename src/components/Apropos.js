@@ -33,7 +33,7 @@ function Apropos() {
             <h2 className="apropos__subtitle">A vous, amateurs ou amoureux du petit boitier noir vintage !</h2>
             <p>Zooms, trépieds, flashs d'occasion, objectifs, boitiers, pellicules rétro, vieux Polaroid ou appareils photos Leica d'hier...<br />
             Notre sélection va vous enchanter ! </p>
-            <Link to={"/boutique"}><Button className="btnClassic apropos__btn">Découvrez nos produits <FontAwesomeIcon icon={faSortDown} /></Button></Link>
+            <Link to={"/boutique"}><Button className="btnClassic apropos__btn">Découvrez nos produits<br/><FontAwesomeIcon icon={faSortDown} /></Button></Link>
         </div>
       </div>
        
