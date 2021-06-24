@@ -7,10 +7,9 @@ $bkgcolor: #CCC;
     margin: 30px 50px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 0.3fr 1.1fr 1.2fr 0.1fr 0.4fr;
+    grid-template-rows: 1.4fr 1.1fr 0.1fr 0.3fr;
     gap: 10px 40px;
     grid-template-areas:
-        "title title"
         "atelier atelier"
         "rendu look"
         "quote quote"
@@ -21,9 +20,8 @@ $bkgcolor: #CCC;
         font-size: 2em;
     }
     &__title {
-        grid-area: title;
-        justify-self: center;
-        align-self: center;
+        text-align: center;
+        margin-bottom: 50px;
         font-size: 3em;
     }
     &__atelier {
@@ -31,11 +29,12 @@ $bkgcolor: #CCC;
         background: url("../assets/fondcameras.jpg") no-repeat fixed;
         padding: 100px;
         text-align: justify;
+        margin: 40px auto;
     }
     &__box {
         background-color: rgba(46, 46, 46, 0.8);
         color: #FFF;
-        padding: 50px;
+        padding: 70px 110px;
     }
     &__rendu {
         grid-area: rendu; 
@@ -72,6 +71,11 @@ $bkgcolor: #CCC;
         margin: 50px auto;
         text-align: center;
         position: relative;
+        & h2 {
+            font-family: Geneva, Verdana, Tahoma, sans-serif!important;
+            font-size: 1.6em!important;
+            font-weight: bold;
+        }
         &::before {
             content: "";
             position: absolute;
@@ -91,6 +95,6 @@ $bkgcolor: #CCC;
         font-family: "Kaushan Script", Verdana, sans-serif;
         font-size: 3em;
         color: $secondarycolor;
-        margin: 40px auto;
+        margin: 40px auto 0px auto;
     }
 }

@@ -1,10 +1,13 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignInAlt, faUserPlus, faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
 import '../styles/Formulaire.scss';
 import '../styles/App.scss';
 
-function Formulaire({cart, updateCart, currentUser, isLoggedIn }) {
+function Formulaire({cart, updateCart, currentUser, isLoggedIn, updateModal }) {
     
     const { register, handleSubmit, formState: {errors}} = useForm({nativeValidation: true});
     const savedUser = JSON.parse(localStorage.getItem('user'));
@@ -107,13 +110,20 @@ function Formulaire({cart, updateCart, currentUser, isLoggedIn }) {
                     <Form.Label htmlFor="email">Email</Form.Label>
                     <Form.Control readOnly type="text" value={currentUser.EmailAddress} id="email"/>
                 </Form.Group>
-                <Button className="btnClassic form__btn" type="submit" >
-                    Envoyer
-                </Button>
+                <div className="form__btns">
+                    <Button className="btnClassic form__btn" type="submit" ><FontAwesomeIcon icon={faCheck}/>Envoyer</Button>
+                    <Button className="btnClassic form__btn" onClick={() =>updateModal(false)}><FontAwesomeIcon icon={faTimes}/> Annuler</Button>
+                </div>
             </Form> 
             ) : (
+                
                 <Form className="infos__form form" onSubmit={handleSubmit((data, e) => { submit(data, e) })}>
-                    <h2 className="form__title">Pour commander sans vous connecter ou vous inscrire, merci de remplir les champs suivants :</h2>
+                    <h2 className="form__title">Pour commander, vous devez vous connecter ou créer un compte.</h2>
+                    <div className="form__connect">
+                        <Link to="/login" className="form__link"><Button className="btnClassic form__btn"><FontAwesomeIcon icon={faSignInAlt} /> Connexion</Button></Link>
+                        <Link to="/signup" className="form__link"><Button className="btnClassic form__btn"><FontAwesomeIcon icon={faUserPlus} /> Inscription</Button></Link>
+                    </div>
+                    <h2 className="form__title">Si vous préférez commander sans compte, merci de remplir les champs suivants :</h2>
                     <div className="form__nomComplet">
                         <Form.Group className="form__prenom">
                             <Form.Label htmlFor="firstname">Prénom</Form.Label>
@@ -154,9 +164,10 @@ function Formulaire({cart, updateCart, currentUser, isLoggedIn }) {
                             })} type="text" placeholder="Par exemple paul.labiche@sfr.fr" id="email"/>
                         {errors.email && <p className="form__error">Ceci n'est pas une adresse mail valide !</p>}
                     </Form.Group>
-                    <Button className="btnClassic form__btn" type="submit" >
-                        Envoyer
-                    </Button>
+                    <div className="form__btns">
+                        <Button className="btnClassic form__btn" type="submit" ><FontAwesomeIcon icon={faCheck}/>Envoyer</Button>
+                        <Button className="btnClassic form__btn" onClick={() =>updateModal(false)}><FontAwesomeIcon icon={faTimes}/> Annuler</Button>
+                    </div>
                 </Form> 
             )}
         </div>

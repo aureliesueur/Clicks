@@ -79,7 +79,7 @@ function Cart({cart, updateCart, currentUser, setCurrentUser, isLoggedIn}) {
                     <FontAwesomeIcon icon={faPaypal} className="infos__icon"/>         
                 </div>
                 { isModalShown ? (
-                    <Formulaire cart={cart} updateCart={updateCart} currentUser={currentUser} setCurrentUser={setCurrentUser} isLoggedIn={isLoggedIn} />
+                    <Formulaire cart={cart} updateCart={updateCart} currentUser={currentUser} setCurrentUser={setCurrentUser} isLoggedIn={isLoggedIn} updateModal={updateModal}/>
                 ) : null }
             </div>
             ) : (

@@ -61,6 +61,7 @@ $bkgcolor: #CCC;
         font-size: 1.3em;
         color: $secondarycolor;
         margin-bottom: 20px;
+        font-family: Geneva, Verdana, Tahoma, sans-serif;
     }
     &__message {
         font-weight: bold;
@@ -80,7 +81,7 @@ $bkgcolor: #CCC;
         position: absolute;
         width: 60%;
         left: 20%;
-        bottom: 50%;
+        bottom: 10%;
         padding: 50px;
         background-color: $bkgcolor;
         border: 1px solid #000;

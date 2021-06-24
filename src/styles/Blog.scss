@@ -8,10 +8,59 @@ $bkgcolor: #CCC;
     &__title {
         font-size: 3em;
         text-align: center;
-        margin: 30px auto;
+        margin: 40px auto 70px auto;
     }
-    &__article h2 {
-        font-size: 2em;
+    &__list {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }   
+}
+
+.article {
+    margin-bottom: 30px;
+    position: relative;
+    &__title {
+        text-align: center!important;
     }
+    &__img {
+        height: 400px;
+        object-fit: cover;
+    }
+    &__infos {
+        font-size: 1.2em!important;
+        font-style: italic!important;
+        margin-bottom: 50px;
+        position: relative;
+        &::after {
+            position: absolute;
+            content: "";
+            width: 50%;
+            left: 50%;
+            bottom: -30px;
+            height: 4px;
+            background-color: $primarycolor;
+        }
+        & span {
+            color: $secondarycolor!important;
+        }
+    }
+    &__text {
+        max-height: 450px!important;
+        overflow: scroll;
+        text-align: justify;
+    }
+    &::before {
+        content: "";
+        position: absolute;
+        z-index: -10;
+        top: 15px;
+        left: 8px;
+        width: 60%;
+        height: 200px;
+        box-shadow: -20px 0 10px darken($bkgcolor, 20%);
+        transform: rotate(-5deg);
+    }
+
 }
    
