@@ -29,3 +29,29 @@ $bkgcolor: #CCC;
         padding-bottom: 5px;
     }
 }
+
+.avis {
+    width: 60%;
+    margin: 50px auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    text-align: center;
+    &__item {
+        margin-right: 20px;
+        padding: 20px
+    }
+    &__text {
+        font-style: italic;
+    }
+    &__name {
+        color:$secondarycolor;
+        margin-bottom: 0px;
+    }
+    &__icon {
+        color:$primarycolor;
+    }
+    &__job {
+        font-size: 0.8em;
+    }
+}
