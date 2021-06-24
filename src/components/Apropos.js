@@ -1,4 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import '../styles/Boutique.scss';
+import '../styles/App.scss';
+import '../lib';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSortDown } from '@fortawesome/free-solid-svg-icons';
 import '../styles/Apropos.scss';
 import '../styles/App.scss';
 
@@ -26,6 +33,7 @@ function Apropos() {
             <h2 className="apropos__subtitle">A vous, amateurs ou amoureux du petit boitier noir vintage !</h2>
             <p>Zooms, trépieds, flashs d'occasion, objectifs, boitiers, pellicules rétro, vieux Polaroid ou appareils photos Leica d'hier...<br />
             Notre sélection va vous enchanter ! </p>
+            <Link to={"/boutique"}><Button className="btnClassic apropos__btn">Découvrez nos produits <FontAwesomeIcon icon={faSortDown} /></Button></Link>
         </div>
       </div>
        

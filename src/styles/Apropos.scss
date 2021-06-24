@@ -97,4 +97,8 @@ $bkgcolor: #CCC;
         color: $secondarycolor;
         margin: 40px auto 0px auto;
     }
+    &__btn {
+        background-color: #FFF!important;
+        color: #000!important;
+    }
 }
