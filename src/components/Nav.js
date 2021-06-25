@@ -2,20 +2,14 @@ import React from 'react';
 import {useState} from "react";
 import Connexion from './Connexion';
 import { Link } from 'react-router-dom';
-//import { useState } from "react";
 import '../styles/Nav.scss';
 import logo from '../assets/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 
-<<<<<<< HEAD
-function Nav({ cart, isLoggedIn, updateConnexion, currentUser, setCurrentUser }) {
-
-=======
 function Nav({cart, isLoggedIn, updateConnexion, currentUser, setCurrentUser}) {
 
   const [isMenuShown, setIsMenuShown] = useState(false);
->>>>>>> responsive
   const basket = cart.reduce(function(total, item) {
     return total + item.quantity;
   }, 0);

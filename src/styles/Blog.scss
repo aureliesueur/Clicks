@@ -64,6 +64,94 @@ $bkgcolor: #CCC;
         box-shadow: -20px 0 10px darken($bkgcolor, 20%);
         transform: rotate(-5deg);
     }
-
 }
+
+/* MEDIA QUERIES */
+
+/* MEDIA QUERIES POUR ADAPTER LE SITE A UN ECRAN TABLETTE------------------------------*/
+
+@media screen and (min-width : 768px) and (max-width : 1024px) {
+    .blog {
+        margin: 60px;
+        &__title {
+            margin: 40px auto;
+        }
+        &__list {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+            justify-content: flex-start;
+            flex-wrap: nowrap;
+        }   
+    }
+    
+    .article {
+        width: 80%!important;
+        margin-bottom: 30px;
+        &__title {
+            text-align: center!important;
+            font-size: 1.5em!important;
+            font-family: Geneva, Verdana, Tahoma, sans-serif
+        }
+        &__img {
+            height: 400px;
+            object-fit: cover;
+        }
+        &__infos {
+            font-size: 1em!important;
+            text-align: center!important;
+            font-style: italic!important;
+            margin-bottom: 50px;
+            position: relative;
+            &::after {
+                position: absolute;
+                content: "";
+                width: 50%;
+                left: 50%;
+                bottom: -30px;
+                height: 4px;
+                background-color: $primarycolor;
+            }
+            & span {
+                color: $secondarycolor!important;
+            }
+        }
+        &__text {
+            max-height: 450px!important;
+            overflow: scroll;
+            text-align: justify;
+        }
+        &::before {
+            content: "";
+            position: absolute;
+            z-index: -10;
+            top: 15px;
+            left: 8px;
+            width: 60%;
+            height: 200px;
+            box-shadow: -20px 0 10px darken($bkgcolor, 20%);
+            transform: rotate(-5deg);
+        }
+    }
+    
+}
+
+/* MEDIA QUERIES POUR ADAPTER LE SITE A UN ECRAN SMARTPHONE------------------------------*/
+
+@media screen and (min-width : 480px) and (max-width : 768px) {
+    
+}
+
+/* MEDIA QUERIES POUR ADAPTER LE SITE A UN PETIT ECRAN SMARTPHONE------------------------------*/
+
+@media screen and (min-width : 320px) and (max-width : 480px) {
+  
+}
+
+
+
+
+
+
    

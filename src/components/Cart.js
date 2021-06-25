@@ -52,7 +52,7 @@ function Cart({cart, updateCart, currentUser, setCurrentUser, isLoggedIn}) {
                     <tr key={cartItem.name.toUpperCase()} className="cart__item cartItem">
                         <td><img src={cartItem.imageUrl} alt={`${cartItem.name}`} className="cartItem__img" /></td>
                         <td className="cartItem__title">{cartItem.name}</td>
-                        <td className="cartItem__price">Prix unitaire: {cartItem.price / 100} €</td>
+                        <td className="cartItem__price">Prix à l'unité: {cartItem.price / 100} €</td>
                         <td className="cartItem__quantity">
                             <Button href="#" variant="primary" className="btnClassic" onClick={() => lowerQuantity(cartItem.imageUrl,cartItem.name, cartItem._id, cartItem.price)}><FontAwesomeIcon icon={faMinus} /></Button>
                             <span>{cartItem.quantity}</span>
