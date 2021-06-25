@@ -7,9 +7,11 @@ $secondarycolor: red;
     justify-content: space-between; 
     align-items: flex-end;
     width: 100%;
+    height: 130px;
     margin: auto;
     background-color: #c7a22d;
     padding: 20px 60px;
+    position: relative;
     &__logo {
         width: 15%;
         margin-right: 30px;
@@ -24,13 +26,6 @@ $secondarycolor: red;
         text-transform: uppercase;
         font-weight: bold;
     }
-    &__link {
-        color: #000!important;
-        text-decoration: none!important;
-        &:hover {
-            color: red!important;
-        }
-    }
 }
 
 .basket {
@@ -43,4 +38,31 @@ $secondarycolor: red;
         color: $secondarycolor!important;
         font-size: 1rem;
     }
+}
+
+.menu__link, .lateralMenu__link {
+    color: #000!important;
+    text-decoration: none!important;
+    &:hover {
+        color: red!important;
+    }
+}
+
+.lateralMenu {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 10;
+    display: flex;
+    flex-direction: column!important;
+    align-items: center;
+    background-color: #FFF;
+    border: 1px solid #000;
+    width: 150px;
+    & li:hover {
+        background-color: #c7a22d;
+        width: 100%!important;
+        text-align: center;
+    }
+    
 }
