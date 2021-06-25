@@ -27,7 +27,7 @@ function Apropos() {
         <h2 className="apropos__subtitle">Le look "rétro"</h2>
         <p>Outre l'effet patiné recherché dans les images par les amateurs de rétro, le look des appareils photo est également un argument qui a fait ses preuves et qui perdure. Deux marques nous viennent immédiatement à l'esprit : Fujifilm et Olympus (nous pensons également à Panasonic), adeptes des robes anciennes sur leurs nouveaux appareils numériques. Loin des designs de certains nouveaux produits, tels que le Pentax K-S1 ou la caméra HTC Re, les deux marques optent encore et toujours pour une ergonomie et un design similaire à ceux des argentiques. Hormis l'effet de style, c'est également un moyen de revenir aux sources, de rendre nostalgiques les plus anciens grâce à une ergonomie, un toucher et une sensation retrouvée. En effet, parallèlement au fait que les écrans deviennent tactiles et orientables, à l'intégration du Wi-Fi ou du NFC pour le partage, les barillets et les molettes de contrôle directement accessibles sur le boîtier sont mis en avant et assurent une prise en main comme sur les anciens reflex ou argentiques.</p>
       </div>
-      <quote className="apropos__quote">Click click, c'est dans la boite!</quote>
+      <div className="apropos__quote">Click click, c'est dans la boite!</div>
       <div className="apropos__calltoaction">
         <div className="apropos__box2">
             <h2 className="apropos__subtitle">A vous, amateurs ou amoureux du petit boitier noir vintage !</h2>

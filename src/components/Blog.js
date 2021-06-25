@@ -39,7 +39,7 @@ function Blog() {
       <div className="blog__list">
 
       { articles.map(article => (
-          <Card className="blog__article article" style={{width:'45%'}}>
+          <Card className="blog__article article" style={{width:'45%'}} key={article.auteur + article.date}>
             <Card.Img src={article.imageUrl} alt={article.image} className="article__img" />
             <Card.Body className="camera__body">
               <h2 className="article__title">{article.titre}</h2>

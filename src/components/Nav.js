@@ -1,13 +1,14 @@
 import React from 'react';
 import Connexion from './Connexion';
+import { Link } from 'react-router-dom';
+//import { useState } from "react";
 import '../styles/Nav.scss';
 import logo from '../assets/logo.png';
-//import '../styles/App.scss';
-import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 
-function Nav({cart, isLoggedIn, updateConnexion, currentUser, setCurrentUser}) {
+function Nav({ cart, isLoggedIn, updateConnexion, currentUser, setCurrentUser }) {
+
   const basket = cart.reduce(function(total, item) {
     return total + item.quantity;
   }, 0);
@@ -28,3 +29,4 @@ function Nav({cart, isLoggedIn, updateConnexion, currentUser, setCurrentUser}) {
 }
 
 export default Nav;
+
