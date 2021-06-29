@@ -18,7 +18,7 @@ function Nav({cart, isLoggedIn, updateConnexion, currentUser, setCurrentUser}) {
 
     <nav className="col navbar navbar-expand-lg navbar-light menu">
       <img src={logo} alt="logo Clicks" className="navbar-brand img-thumbnail img-fluid menu__logo" />
-      <button  onClick={() => setIsMenuShown(!isMenuShown)} class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
+      <button  onClick={() => setIsMenuShown(!isMenuShown)} class="navbar-toggler menu__toggle" type="button" data-toggle="collapse" data-target="#navbarContent">
           <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarContent">
