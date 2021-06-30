@@ -131,61 +131,7 @@ $bkgcolor: #CCC;
 
 /* MEDIA QUERIES POUR ADAPTER LE SITE A UN ECRAN SMARTPHONE------------------------------*/
 
-@media screen and (min-width : 480px) and (max-width : 768px) {
-    .apropos {
-        margin: 30px 50px;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1.4fr 1.1fr 0.1fr 0.3fr;
-        gap: 10px 40px;
-        grid-template-areas:
-            "atelier atelier"
-            "rendu look"
-            "quote quote"
-            "calltoaction calltoaction";
-        & h2 {
-            margin-bottom: 20px;
-            font-size: 2em;
-        }
-        &__title {
-            margin-bottom: 50px;
-            font-size: 3em;
-        }
-        &__atelier {
-            padding: 100px;
-            margin: 40px auto;
-        }
-        &__box {
-            padding: 70px 110px;
-        }
-        &__rendu, &__look {
-            margin-top: 20px;
-            padding: 20px;
-        }
-        &__calltoaction {
-            justify-self: center;
-            align-self: center;
-            padding: 70px;
-            width: 60%;
-            margin: 50px auto;
-            & h2 {
-                font-size: 1.6em!important;
-            }
-        }
-        &__quote {
-            justify-self: center;
-            align-self: center;
-            font-size: 3em;
-            margin: 40px auto 0px auto;
-        }
-        &__btn {
-            line-height: 17px!important;
-        }
-    }
-}
-
-/* MEDIA QUERIES POUR ADAPTER LE SITE A UN PETIT ECRAN SMARTPHONE------------------------------*/
-
-@media screen and (min-width : 320px) and (max-width : 480px) {
+@media screen and (min-width : 320px) and (max-width : 768px) {
     .apropos {
         margin: 20px 0px;
         grid-template-columns: 1fr;
@@ -241,7 +187,11 @@ $bkgcolor: #CCC;
     }
 }
 
+/* MEDIA QUERIES POUR ADAPTER LE SITE A UN GRAND ECRAN SMARTPHONE------------------------------*/
 
+@media screen and (min-width : 480px) and (max-width : 768px) {
+
+}
 
 
 

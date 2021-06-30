@@ -83,4 +83,74 @@ $bkgcolor: #CCC;
     }
 }
 
-//.btn-primary:not(:disabled):not(.disabled):active, 
+/* MEDIA QUERIES */
+
+/* MEDIA QUERIES POUR ADAPTER LE SITE A UN ECRAN TABLETTE------------------------------*/
+
+@media screen and (min-width : 768px) and (max-width : 1024px) {
+    .camera {
+        width: 70%!important;
+        &__body {
+            margin: 10px;
+        }
+        &__title {
+            font-style: 1.2em!important;
+            margin: 10px auto 30px auto;
+        }
+        &__btn {
+            width: 40%;
+        }
+        &__lenses {
+            margin-top: 30px;
+        }
+    }
+    .lenses {
+        &__title {
+            font-size: 1em;
+            margin-bottom: 20px;
+            margin-top: 40px;
+        }
+        &__btn Button {
+            font-size: 0.8em;
+        }
+    } 
+}
+
+/* MEDIA QUERIES POUR ADAPTER LE SITE A UN ECRAN SMARTPHONE------------------------------*/
+
+@media screen and (min-width : 320px) and (max-width : 768px) {
+    .camera {
+        width: 90%!important;
+        &__body {
+            margin: 0px;
+        }
+        &__title {
+            font-size: 2em!important;
+            margin: 10px auto 30px auto;
+        }
+        &__btn {
+            width: 60%;
+        }
+        &__lenses {
+            margin-top: 30px;
+        }
+    }
+    .lenses {
+        &__title {
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            margin-top: 40px;
+        }
+        &__btn Button {
+            font-size: 0.8em;
+        }
+    } 
+}
+
+/* MEDIA QUERIES POUR ADAPTER LE SITE A UN GRAND ECRAN SMARTPHONE------------------------------*/
+
+@media screen and (min-width : 480px) and (max-width : 768px) {
+  
+}
+
+

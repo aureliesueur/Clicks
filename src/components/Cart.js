@@ -50,7 +50,7 @@ function Cart({cart, updateCart, currentUser, setCurrentUser, isLoggedIn}) {
                 <tbody>
                 {cart.map(cartItem => (
                     <tr key={cartItem.name.toUpperCase()} className="cart__item cartItem">
-                        <td><img src={cartItem.imageUrl} alt={`${cartItem.name}`} className="cartItem__img" /></td>
+                        <td className="cartItem__imgCol"><img src={cartItem.imageUrl} alt={`${cartItem.name}`} className="cartItem__img" /></td>
                         <td className="cartItem__title">{cartItem.name}</td>
                         <td className="cartItem__price">Prix à l'unité: {cartItem.price / 100} €</td>
                         <td className="cartItem__quantity">
@@ -59,7 +59,7 @@ function Cart({cart, updateCart, currentUser, setCurrentUser, isLoggedIn}) {
                             <Button href="#" variant="primary" className="btnClassic" onClick={() => raiseQuantity(cartItem.imageUrl,cartItem.name, cartItem._id, cartItem.price)}><FontAwesomeIcon icon={faPlus} /></Button>
                         </td>
                         <td className="cartItem__suppress">
-                            <Button href="#" variant="primary" className="btnClassic" onClick={() => suppressFromCart(cartItem.name)}><FontAwesomeIcon icon={faTrashAlt} /> Supprimer</Button>
+                            <Button href="#" variant="primary" className="btnClassic" onClick={() => suppressFromCart(cartItem.name)}><FontAwesomeIcon icon={faTrashAlt} /> <span>Supprimer</span></Button>
                         </td>
                         <td className="cartItem__totalPrice">Prix Total: {cartItem.price * cartItem.quantity / 100} €</td>
                     </tr>

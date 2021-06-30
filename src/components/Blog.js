@@ -41,7 +41,7 @@ function Blog() {
       { articles.map(article => (
           <Card className="blog__article article" style={{width:'45%'}} key={article.auteur + article.date}>
             <Card.Img src={article.imageUrl} alt={article.image} className="article__img" />
-            <Card.Body className="camera__body">
+            <Card.Body className="article__body">
               <h2 className="article__title">{article.titre}</h2>
               <h3 className="article__infos">Par <span>{article.auteur}</span> - Publié le {article.date}</h3>
               <Card.Text className="article__text">{article.description}</Card.Text> 

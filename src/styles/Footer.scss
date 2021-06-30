@@ -28,3 +28,72 @@ $secondarycolor: red;
         margin-right: 10px;
     }
 }
+
+/* MEDIA QUERIES */
+
+/* MEDIA QUERIES POUR ADAPTER LE SITE A UN ECRAN TABLETTE------------------------------*/
+
+@media screen and (min-width : 768px) and (max-width : 1024px) {
+    .footer {
+        padding: 30px;
+        &__logo {
+            width: 20%;
+            margin-right: 30px;
+        }
+        &__menu {
+            & li {
+                font-size: 0.9em;
+            }
+        }
+        &__coordonnees p {
+            font-size: 0.9em;
+        }
+        &__icon {
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+    }
+}
+
+/* MEDIA QUERIES POUR ADAPTER LE SITE A UN ECRAN SMARTPHONE------------------------------*/
+
+@media screen and (min-width : 320px) and (max-width : 768px) {
+    .footer {
+        flex-direction: column;
+        justify-content: flex-start; 
+        align-items: center;
+        padding: 30px;
+        &__logo {
+            width: 50%;
+            margin-right: 0px;
+        }
+        &__menu {
+            padding-left: 0;
+            margin-bottom: 30px;
+            & li {
+                font-size: 0.9em;
+            }
+        }
+        &__coordonnees {
+            margin-bottom: 30px;
+            & p {
+                font-size: 0.8em;
+                line-height: 0px!important;
+            }
+        }
+        &__icon {
+            font-size: 1.2em;
+        }
+    }  
+}
+
+/* MEDIA QUERIES POUR ADAPTER LE SITE A UN GRAND ECRAN SMARTPHONE------------------------------*/
+
+@media screen and (min-width : 480px) and (max-width : 768px) {
+  
+}
+
+
+
+
+

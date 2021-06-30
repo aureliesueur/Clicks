@@ -11,15 +11,16 @@ $bkgcolor: #CCC;
 
 }
 
-/* MEDIA QUERIES POUR ADAPTER LE SITE A UN ECRAN SMARTPHONE------------------------------*/
+
+/* MEDIA QUERIES POUR ADAPTER LE SITE A UN GRAND ECRAN SMARTPHONE------------------------------*/
 
 @media screen and (min-width : 480px) and (max-width : 768px) {
 
 }
 
-/* MEDIA QUERIES POUR ADAPTER LE SITE A UN PETIT ECRAN SMARTPHONE------------------------------*/
+/* MEDIA QUERIES POUR ADAPTER LE SITE A UN ECRAN SMARTPHONE------------------------------*/
 
-@media screen and (min-width : 320px) and (max-width : 480px) {
+@media screen and (min-width : 320px) and (max-width : 768px) {
     .carousel__title {
         font-size: 1em;
 
