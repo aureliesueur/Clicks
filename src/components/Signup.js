@@ -65,7 +65,7 @@ function Signup({isLoggedIn, updateConnexion}) {
                     </Form.Group>
                 </div>
 
-                <Form.Group controlId="origine">
+                <Form.Group controlId="origine" className="origine">
                     <Form.Label className="signup__label">Comment nous avez-vous connus ?</Form.Label>
                     <Form.Control as="select" multiple>
                     <option>Google Search</option>

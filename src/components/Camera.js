@@ -18,12 +18,14 @@ function Camera({cart, updateCart}) {
         getSingleProduct(id)
     });
     const [camera, setCamera] = useState({});
+    const [lenses, updateLenses] = useState([]);
     const [rSelected, setRSelected] = useState(null);
     function getSingleProduct(id) {  
         fetch ("http://localhost:3000/api/cameras/" + id)
         .then(response => response.json())
         .then(response => {
             setCamera(response);
+            updateLenses(response.lenses);
             //console.log(camera);
         })
         .catch(error => alert("Erreur:" + error));
@@ -48,9 +50,13 @@ function Camera({cart, updateCart}) {
                 <div className="camera__lenses lenses">
                     <h2 className="lenses__title">Sélectionnez la lentille de votre choix</h2>
                     <ButtonGroup className="lenses__btn">
-                        <Button onClick={() => setRSelected(1)} active={rSelected === 1}>Pas de préférence</Button>
-                        <Button onClick={() => setRSelected(2)} active={rSelected === 2}>{camera.lenses}</Button>
-                        <Button onClick={() => setRSelected(3)} active={rSelected === 3}>{camera.lenses}</Button>
+                        <Button onClick={() => setRSelected("Pas de préférence")} active={rSelected === "Pas de préférence"}>Pas de préférence</Button>
+
+                    
+                        {lenses.map(lense => (
+                            <Button onClick={() => setRSelected(lense)} active={rSelected === lense}>{lense}</Button>
+                        ))}
+
                     </ButtonGroup>
                     <p className="lenses__option">Option choisie: {rSelected}</p>
                     </div>
@@ -60,3 +66,6 @@ function Camera({cart, updateCart}) {
 }
 
 export default Camera;
+
+/* <Button onClick={() => setRSelected(2)} active={rSelected === 2}>{camera.lenses[0]}</Button>
+                        <Button onClick={() => setRSelected(3)} active={rSelected === 3}>{camera.lenses[1]}</Button>*/

@@ -20,7 +20,7 @@ $bkgcolor: #CCC;
         position: absolute;
         top: 100%;
         width: 200%;
-        z-index: 2;
+        z-index: 20;
         line-height: 15px;
         & span {
             font-weight: bold;
@@ -59,7 +59,7 @@ $bkgcolor: #CCC;
 
 @media screen and (min-width : 320px) and (max-width : 768px) {
     .connexion {
-        &__connect, &__disconnect {
+        &__connect, &__deconnect {
             align-items: flex-start!important;
             position: absolute!important;
             top: 25px!important;

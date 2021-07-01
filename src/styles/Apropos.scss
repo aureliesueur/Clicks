@@ -189,8 +189,25 @@ $bkgcolor: #CCC;
 
 /* MEDIA QUERIES POUR ADAPTER LE SITE A UN GRAND ECRAN SMARTPHONE------------------------------*/
 
-@media screen and (min-width : 480px) and (max-width : 768px) {
-
+@media screen and (min-width : 474px) and (max-width : 768px) {
+    .apropos {
+        &__rendu, &__look {
+        position: relative;
+        background-color: #FFF;
+        border: 1px solid $primarycolor;
+        margin-top: 20px;
+        padding: 20px;
+        text-align: justify;
+            &::before {
+                top: 15px;
+                left: 15px;
+                width: 50%;
+                height: 200px;
+                box-shadow: -20px 0 10px darken($bkgcolor, 10%);
+                transform: rotate(-3deg);
+            }
+        }
+    }
 }
 
 
